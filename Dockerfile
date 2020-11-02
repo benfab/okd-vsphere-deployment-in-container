@@ -11,6 +11,7 @@ RUN yum -y install unzip \
 # Install OpenShift 4.x deployment tool 
 COPY openshift-install /usr/local/bin/
 COPY oc /usr/local/bin/
+COPY kubectl /usr/local/bin/
 
 # Set default command
 CMD ["/usr/bin/bash"]

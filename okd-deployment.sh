@@ -7,7 +7,8 @@ cp certs/lin/* /etc/pki/ca-trust/source/anchors
 update-ca-trust extract
 
 # Generate install-config.yaml file
-cat << EOF > /root/install-config.yaml
+
+cat << EOF > install-config.yaml
 apiVersion: v1
 baseDomain: $OKD_BASE_DOMAIN
 compute:

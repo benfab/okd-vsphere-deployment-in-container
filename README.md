@@ -15,8 +15,10 @@ It follows the OpenShift guide: https://docs.openshift.com/container-platform/4.
 2. Run the container on Docker engine using the following command: 
 
 `cd okd-vsphere-deployment-in-container`  
-`docker run --env-file=env_file -v  ${PWD}:/root benfab/okd-vsphere-deployment-in-container /root/okd-deployment.sh`  
+`docker run --env-file=env_file -v ${PWD}:/root benfab/okd-vsphere-deployment-in-container /root/okd-deployment.sh`
 
 3. If needed OKD install files are available on the parent directory  
 
 **Note:** This container aims to be run as part of a CI/CD pipeline task.
+
+
