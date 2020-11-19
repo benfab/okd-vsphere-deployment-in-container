@@ -6,9 +6,12 @@ unzip -qq download.zip
 cp certs/lin/* /etc/pki/ca-trust/source/anchors
 update-ca-trust extract
 
+# Create install directory
+mkdir -p /okd/okd-deploy
+
 # Generate install-config.yaml file
 
-cat << EOF > install-config.yaml
+cat << EOF > /okd/okd-deploy/install-config.yaml
 apiVersion: v1
 baseDomain: $OKD_BASE_DOMAIN
 compute:
@@ -50,10 +53,14 @@ publish: External
 pullSecret: $OKD_SECRET
 EOF
 
-# deploy cluster
-openshift-install create cluster --dir=/root --log-level=info 
+cat /okd/okd-deploy/install-config.yaml
 
-export KUBECONFIG=/root/auth/kubeconfig 
+# deploy cluster
+openshift-install create cluster --dir=/okd/okd-deploy --log-level=info 
+
+export KUBECONFIG=/okd/okd-deploy/auth/kubeconfig 
 oc version
+oc cluster-info
+oc get nodes
 
 
